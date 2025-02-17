@@ -27,14 +27,14 @@ async function bootstrap() {
     .setVersion('1.0')
     .setTitle('Cytric NFT Backend')
     .setDescription(
-      'Use the base API endpoints to store and retrieve nft data  at http://localhost:3000',
+      'Use the base API endpoints to store and retrieve nft data  at http://localhost:8888',
     )
     .setTermsOfService('https://example.com/terms')
     .setLicense(
       'MIT License',
       'https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt',
     )
-    .addServer('http://localhost:3000', 'Development Server')
+    .addServer('http://localhost:8888', 'Development Server')
     .addBearerAuth({
       type: 'http',
       name: 'Authorization',
@@ -53,6 +53,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(3000);
+  await app.listen(8888);
 }
 bootstrap();

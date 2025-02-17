@@ -1,0 +1,11 @@
+#create user 
+POST http://localhost:8888/nfts/
+content-type: application/json
+
+{
+    "nftName": "joseph",
+    "nftDescription": "joseph",
+    "nftLogoUrl": "https://images.app.goo.gl/98dgUoyEywAhPk7X7",
+    "nftId": 1,
+    "userWallet": "wallet"
+}

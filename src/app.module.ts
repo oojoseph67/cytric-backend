@@ -13,7 +13,8 @@ export const ENV = process.env.NODE_ENV;
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get('MONGODB_URI'),
+        // uri: configService.get('MONGODB_URI'),
+        uri: 'mongodb+srv://o3jpro:oojosepH67@cluster0.exyirxv.mongodb.net/CYTRIC?retryWrites=true&w=majority&appName=Cluster0',
         useNewUrlParser: true,
         useUnifiedTopology: true,
       }),
