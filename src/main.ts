@@ -5,9 +5,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  /*
-   * Use validation pipes globally
-   */
+
+  // Use validation pipes globally
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -19,15 +18,12 @@ async function bootstrap() {
     }),
   );
 
-  /**
-   * swagger configuration
-   */
-
+  // Swagger configuration
   const swaggerConfig = new DocumentBuilder()
     .setVersion('1.0')
     .setTitle('Cytric NFT Backend')
     .setDescription(
-      'Use the base API endpoints to store and retrieve nft data  at http://localhost:8888',
+      'Use the base API endpoints to store and retrieve NFT data at http://localhost:8888',
     )
     .setTermsOfService('https://example.com/terms')
     .setLicense(
@@ -53,6 +49,9 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(8888);
+  // Use Render's assigned port or default to 8888 locally
+  const port = process.env.PORT || 8888;
+  await app.listen(port, '0.0.0.0');
+  console.log(`🚀 Server running on port ${port}`);
 }
 bootstrap();
