@@ -74,8 +74,8 @@ $ pnpm run compodoc:serve
 
 ## Stay in touch
 
-- Author - [Your Name]
-- Website - [Your Website]
+- Author - Joseph
+- Website - https://github.com/oojoseph67
 
 ## License
 
