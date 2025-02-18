@@ -1,4 +1,4 @@
-#create user 
+#create nft 
 POST http://localhost:8888/nfts/
 content-type: application/json
 
@@ -6,6 +6,14 @@ content-type: application/json
     "nftName": "joseph",
     "nftDescription": "joseph",
     "nftLogoUrl": "https://images.app.goo.gl/98dgUoyEywAhPk7X7",
-    "nftId": 1,
-    "userWallet": "wallet"
+    "nftId": 10,
+    "userWallet": "0x4A419AaEd25a4db5C8aa3710d6335668f991b14b"
 }
+
+#get single nft 
+GET http://localhost:8888/nfts/1
+content-type: application/json
+
+#get nft per wallet 
+GET http://localhost:8888/nfts/findByWallet?userWallet=0x4A419AaEd25a4db5C8aa3710d6335668f991b14b
+content-type: application/json

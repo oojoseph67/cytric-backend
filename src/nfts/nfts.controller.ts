@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { NftsService } from './nfts.service';
 import { CreateNftDto } from './dto/create-nft.dto';
@@ -17,13 +18,17 @@ export class NftsController {
 
   @Post()
   create(@Body() createNftDto: CreateNftDto) {
-    console.log({ createNftDto });
     return this.nftsService.create({ nftData: createNftDto });
   }
 
   @Get()
   findAll() {
     return this.nftsService.findAll();
+  }
+
+  @Get('/findByWallet')
+  findByWallet(@Query('userWallet') userWallet: string) {
+    return this.nftsService.findByWallet(userWallet);
   }
 
   @Get(':id')

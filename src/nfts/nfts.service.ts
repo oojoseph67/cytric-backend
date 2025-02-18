@@ -33,7 +33,7 @@ export class NftsService {
       const savedData = await newNft.save();
 
       return savedData.toJSON();
-    } catch (error) {
+    } catch (error: any) {
       throw new HttpException(
         `Error while creating NFT: ${error.message}`,
         HttpStatus.BAD_REQUEST,
@@ -49,8 +49,49 @@ export class NftsService {
     return `This action returns all nfts`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} nft`;
+  async findOne(id: number) {
+    let nft: Nft;
+
+    try {
+      nft = await this.nftModel.findOne({ nftId: id });
+    } catch (error: any) {
+      throw new HttpException(
+        `Error finding NFT with id: ${id}... ${error.message}`,
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error.message,
+          description: error,
+        },
+      );
+    }
+
+    if (!nft) {
+      throw new HttpException(
+        `NFT with id: ${id} was not found`,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    return nft;
+  }
+
+  async findByWallet(userWallet: string) {
+    let nft: Nft[];
+
+    try {
+      nft = await this.nftModel.find({ userWallet: userWallet.toLowerCase() });
+    } catch (error: any) {
+      throw new HttpException(
+        `Error finding NFT for wallet address: ${userWallet}... ${error.message}`,
+        HttpStatus.BAD_REQUEST,
+        {
+          cause: error.message,
+          description: error,
+        },
+      );
+    }
+
+    return nft;
   }
 
   update(id: number, updateNftDto: UpdateNftDto) {
