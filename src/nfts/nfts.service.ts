@@ -45,10 +45,6 @@ export class NftsService {
     }
   }
 
-  findAll() {
-    return `This action returns all nfts`;
-  }
-
   async findOne(id: number) {
     let nft: Nft;
 
@@ -92,13 +88,5 @@ export class NftsService {
     }
 
     return nft;
-  }
-
-  update(id: number, updateNftDto: UpdateNftDto) {
-    return `This action updates a #${id} nft`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} nft`;
   }
 }
