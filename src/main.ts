@@ -23,7 +23,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .setTitle('Cytric NFT Backend')
     .setDescription(
-      'Use the base API endpoints to store and retrieve NFT data at http://localhost:8888',
+      'Use the base API endpoints to store and retrieve NFT data',
     )
     .setTermsOfService('https://example.com/terms')
     .setLicense(
@@ -31,6 +31,7 @@ async function bootstrap() {
       'https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt',
     )
     .addServer('http://localhost:8888', 'Development Server')
+    .addServer('https://cytric-backend-ocff.onrender.com', 'Production Server')
     .addBearerAuth({
       type: 'http',
       name: 'Authorization',
@@ -49,7 +50,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  // Use Render's assigned port or default to 8888 locally
   const port = process.env.PORT || 8888;
   await app.listen(port, '0.0.0.0');
   console.log(`🚀 Server running on port ${port}`);
