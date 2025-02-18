@@ -10,7 +10,8 @@ A REST API built with [Nest](https://github.com/nestjs/nest) framework for manag
 ## Documentation
 
 ### API Documentation (Swagger)
-- URL: `http://localhost:8888/api`
+- Local URL: `http://localhost:8888/api`
+- Production URL: `https://cytric-backend-ocff.onrender.com/api`
 - Interactive API documentation with request/response examples
 - Test endpoints directly from the browser
 
