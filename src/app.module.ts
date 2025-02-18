@@ -7,13 +7,13 @@ import { NftsModule } from './nfts/nfts.module';
 import databaseConfig from './config/database.config';
 import environmentValidation from './config/environmentValidation';
 
-export const ENV = process.env.NODE_ENV;
+const ENV = process.env.NODE_ENV || 'development';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: !ENV ? '.env' : `.env.${ENV}.local`,
+      envFilePath: ENV === 'development' ? '.env' : `.env.${ENV}`,
       load: [databaseConfig],
       validationSchema: environmentValidation,
     }),
@@ -22,7 +22,7 @@ export const ENV = process.env.NODE_ENV;
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        uri: configService.get('MONGODB_URI'),
+        uri: configService.get<string>('MONGODB_URI'),
         useNewUrlParser: true,
         useUnifiedTopology: true,
       }),
